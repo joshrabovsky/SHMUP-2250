@@ -13,13 +13,13 @@ public class Main : MonoBehaviour
     public float enemySpawnPerSecond = 0.5f; //# of Enemies per second
     public float enemyDefaultPadding = 1.5f; //Padding for position
 
-    private BoundsCheck bndCheck;
+    private BoundsCheck _bndCheck;
 
     void Awake()
     {
         S = this;
         //Set bndChec to reference the BoundsChec component on this GameObject
-        bndCheck = GetComponent<BoundsCheck>();
+        _bndCheck = GetComponent<BoundsCheck>();
         //Invoke SpawnEnemy() once (in 2 seconds, based on default value)
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond); //called every x seconds
     }
@@ -40,12 +40,12 @@ public class Main : MonoBehaviour
 
         //Set the initial position for the spawned Enemy
         Vector3 pos = Vector3.zero;
-        float xMin = -bndCheck.camWidth + enemyPadding;
-        float xMax = bndCheck.camWidth - enemyPadding;
+        float xMin = -_bndCheck.camWidth + enemyPadding;
+        float xMax = _bndCheck.camWidth - enemyPadding;
         //Random X position within screen width - padding on each side
         pos.x = Random.Range(xMin, xMax);
         //The height is the height of the cam + padding
-        pos.y = bndCheck.camHeight + enemyPadding;
+        pos.y = _bndCheck.camHeight + enemyPadding;
         //Setting the postiion
         go.transform.position = pos;
 

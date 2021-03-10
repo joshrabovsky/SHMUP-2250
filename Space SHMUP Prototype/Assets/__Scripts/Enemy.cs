@@ -29,13 +29,13 @@ public class Enemy : MonoBehaviour
     }
 
     //Creating a private BoundsCheck so that the enemy stays on screen
-    private BoundsCheck bndCheck;
+    private BoundsCheck _bndCheck;
 
     //bndCheck retrieves the component on awake so that the BoundsCheck
     //script is attached
     void Awake()
     {
-        bndCheck = GetComponent<BoundsCheck>();
+        _bndCheck = GetComponent<BoundsCheck>();
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
 
         //bndCheck needs to be set and if off screen besides up the GO should
         //be destroyed
-        if (bndCheck != null && (bndCheck.offDown || bndCheck.offLeft || bndCheck.offRight))
+        if (_bndCheck != null && (_bndCheck.offDown || _bndCheck.offLeft || _bndCheck.offRight))
         {
             //Will destory when completely of the bottom
             Destroy(gameObject);

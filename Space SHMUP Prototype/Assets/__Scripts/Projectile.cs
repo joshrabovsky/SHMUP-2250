@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private BoundsCheck bndCheck;
+    private BoundsCheck _bndCheck;
 
     void Awake()
     {
         //Add a bounds check to the projectile
-        bndCheck = GetComponent<BoundsCheck>();    
+        _bndCheck = GetComponent<BoundsCheck>();    
     }
 
     void Update()
     {
         //If the bndCheck is offUp, destory the object
-        if (bndCheck.offUp)
+        if (_bndCheck.offUp)
         {
             Destroy(gameObject);
         }    

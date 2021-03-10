@@ -18,7 +18,7 @@ public class Hero : MonoBehaviour
 
     [Header("Set Dynamically")]
     //This variable holds a reference to the last triggering GameObject
-    private GameObject lastTriggerGo = null;
+    private GameObject _lastTriggerGo = null;
 
     // Called when the script is being loaded
     void Awake()
@@ -82,12 +82,12 @@ public class Hero : MonoBehaviour
         //Make sure its not the same triggering GO as last time
         //This can happen if two child GameObjects of the same enemy
         //both trigger the hero collider in the same single frame
-        if(go == lastTriggerGo)
+        if(go == _lastTriggerGo)
         {
             return;
         }
         //assign enemy to last triggered enemy
-        lastTriggerGo = go;
+        _lastTriggerGo = go;
 
         if (go.tag == "Enemy") //Ensure the other is the enemy
         {
